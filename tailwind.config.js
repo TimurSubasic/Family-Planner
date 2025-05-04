@@ -7,4 +7,17 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  safelist: [
+    "p-3",
+    "rounded-r-full",
+    "bg-white",
+    "text-xl",
+    "font-semibold",
+    "w-[35%]",
+    "w-[65%]",
+    "gap-2",
+    "flex-1",
+    "my-10",
+    "mt-10",
+  ],
 };

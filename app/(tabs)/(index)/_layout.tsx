@@ -12,7 +12,9 @@ export default function IndexLayout() {
       <Stack.Screen
         name="Duge"
         options={{
+          headerBackTitle: "Back",
           headerShown: true,
+          headerTintColor: "#1e293b",
         }}
       />
     </Stack>

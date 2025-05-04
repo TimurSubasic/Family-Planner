@@ -11,7 +11,7 @@ export default function Index() {
   return (
     <SafeAreaView>
       <View className="p-5 w-full flex flex-col gap-5">
-        <Text className="text-center uppercase font-semibold text-2xl my-5">
+        <Text className="text-center uppercase font-bold text-2xl my-5">
           Your Homes
         </Text>
         <TouchableOpacity
