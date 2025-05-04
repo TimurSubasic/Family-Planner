@@ -61,17 +61,6 @@ const Duge = () => {
     Alert.alert(`Start date: ${startDate} ; End date: ${endDate}`);
   };
 
-  const members = [
-    { name: "Timur", color: "#4363d8" }, //blue
-    { name: "Mirza", color: "#3cb44b" }, //green
-    { name: "Emira", color: "#fabed4" }, //pink
-    { name: "Adnan", color: "#000075" }, //navy
-    { name: "Ridvan", color: "#469990" }, //teal
-    { name: "Nadja", color: "#911eb4" }, //purple
-    { name: "Aida", color: "#e6194B" }, //red
-    { name: "Sakib", color: "#bfef45" }, //lime
-  ];
-
   const bookings = [
     {
       name: "Timur",
