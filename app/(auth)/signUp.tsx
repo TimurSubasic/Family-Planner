@@ -1,35 +1,26 @@
-import { router } from "expo-router";
 import React, { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { setDataEmail, setDataUsername } from "./userData";
 
 // Replace with the user's email
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const [code, setCode] = useState("");
 
   const handleSend = async () => {
-    // OTP send logic from supabase
-    // ...
-    // add username from here to users table username field
-
-    setDataEmail(email);
-    setDataUsername(username);
-
     {
       /**const { data, error } = await supabase.auth.signInWithOtp({
       email: email,
       options: {
         // set this to false if you do not want the user to be automatically signed up
-        shouldCreateUser: true,
+        shouldCreateUser: false,
       },
     }); */
     }
-
-    router.push("/(auth)/code");
   };
+
+  const handleVerify = () => {};
 
   return (
     <SafeAreaView className="flex-1">
@@ -39,48 +30,60 @@ const SignUp = () => {
             Welcome to Family Planner
           </Text>
           <Text className="text-center text-lg font-medium">
-            Please fill out the form to Sign-Up
+            Please enter your email and we will send you a verification code to
+            that email address!
           </Text>
 
-          <View className="flex w-full items-start justify-center gap-5">
-            <Text className="font-semibold text-lg">Email:</Text>
+          <View className="flex w-full items-start justify-center gap-10">
+            <View className="flex w-full items-start justify-center gap-5">
+              <Text className="font-semibold text-lg">Email:</Text>
 
-            <TextInput
-              className="p-5 border border-slate-600 rounded-lg w-full "
-              placeholder="your@email.com"
-              placeholderTextColor={"#475569"}
-              onChangeText={(newText) => setEmail(newText)}
-              defaultValue={email}
-            />
+              <View className="flex flex-row gap-2 w-full">
+                <TextInput
+                  className="p-5 border border-slate-600 rounded-lg w-[65%] "
+                  placeholder="your@email.com"
+                  inputMode="email"
+                  placeholderTextColor={"#475569"}
+                  onChangeText={(newText) => setEmail(newText)}
+                  defaultValue={email}
+                />
+                <TouchableOpacity
+                  onPress={handleSend}
+                  className="flex-1 rounded-lg bg-slate-800 p-5"
+                >
+                  <Text className="text-white font-bold text-xl text-center">
+                    Send
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
 
-            <Text className="font-semibold text-lg">Username:</Text>
+            <View className="flex w-full items-start justify-center gap-5">
+              <Text className="font-semibold text-lg">
+                Your Verification Code:
+              </Text>
 
-            <TextInput
-              className="p-5 border border-slate-600 rounded-lg w-full "
-              placeholder="Enter your username"
-              placeholderTextColor={"#475569"}
-              onChangeText={(newText) => setUsername(newText)}
-              defaultValue={username}
-            />
-          </View>
-
-          <View className="mt-10 flex items-center justify-center flex-row w-full">
-            <Text className=" text-lg font-semibold">
-              Already have an account?{" "}
-            </Text>
-            <TouchableOpacity onPress={() => router.push("/(auth)/logIn")}>
-              <Text className="text-blue-500 text-xl font-bold"> Log-In</Text>
-            </TouchableOpacity>
+              <View className="flex flex-row gap-2 w-full">
+                <TextInput
+                  className="p-5 border border-slate-600 rounded-lg w-[65%] "
+                  placeholder="123456"
+                  inputMode="numeric"
+                  placeholderTextColor={"#475569"}
+                  onChangeText={(newText) => setCode(newText)}
+                  defaultValue={code}
+                />
+                <TouchableOpacity
+                  onPress={handleVerify}
+                  className="flex-1 rounded-lg bg-slate-800 p-5"
+                >
+                  <Text className="text-white font-bold text-xl text-center">
+                    Verify
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
           </View>
         </View>
-        <TouchableOpacity
-          onPress={handleSend}
-          className="w-full rounded-lg bg-slate-800 p-5 mb-10"
-        >
-          <Text className="text-white font-bold text-xl text-center">
-            Send Code
-          </Text>
-        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );

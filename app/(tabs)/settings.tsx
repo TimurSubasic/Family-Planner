@@ -83,7 +83,10 @@ const Settings = () => {
   };
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      keyboardShouldPersistTaps="handled"
+    >
       <SafeAreaView>
         <View className="p-5">
           <View className="w-full flex flex-row items-center justify-between mb-10 mt-5">
