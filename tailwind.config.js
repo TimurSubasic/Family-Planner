@@ -15,9 +15,12 @@ module.exports = {
     "font-semibold",
     "w-[35%]",
     "w-[65%]",
+    "w-[55%]",
     "gap-2",
     "flex-1",
     "my-10",
     "mt-10",
+    "p-5",
+    "rounded-lg",
   ],
 };
