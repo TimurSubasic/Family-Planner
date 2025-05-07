@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import Dialog from "react-native-dialog";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -7,8 +7,17 @@ type HasFamilyProps = {
   changeInFamily: () => void;
 };
 
+interface Users {
+  id: number;
+  created_at: string;
+  email: string;
+  family_id: number;
+  color: string;
+  name: string;
+}
+
 const HasFamily = ({ changeInFamily }: HasFamilyProps) => {
-  const members = [
+  const membersList = [
     { name: "Timur", color: "#4363d8" }, //blue
     { name: "Mirza", color: "#3cb44b" }, //green
     { name: "Emira", color: "#fabed4" }, //pink
@@ -35,6 +44,26 @@ const HasFamily = ({ changeInFamily }: HasFamilyProps) => {
     setVisible(false);
   };
 
+  const [members, setMembers] = useState<Users[]>([]);
+
+  const getMembers = async () => {
+    /* const { error, data } = await supabase
+      .from("users")
+      .select("*")
+      .order("id", { ascending: true });
+
+    if (error) {
+      console.log("Error reading users ", error.message);
+      return;
+    }
+
+    setMembers(data);*/
+  };
+
+  useEffect(() => {
+    getMembers();
+  }, []);
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <SafeAreaView>
@@ -46,7 +75,7 @@ const HasFamily = ({ changeInFamily }: HasFamilyProps) => {
             </Text>
 
             <View className="flex flex-col items-center justify-center gap-5 my-3">
-              {members.map((users, index) => (
+              {membersList.map((users, index) => (
                 <View
                   key={index}
                   className={` w-full flex items-start justify-start `}

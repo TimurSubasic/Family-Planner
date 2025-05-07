@@ -1,11 +1,10 @@
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import React, { useState } from "react";
 import {
-  Keyboard,
+  ScrollView,
   Text,
   TextInput,
   TouchableOpacity,
-  TouchableWithoutFeedback,
   View,
 } from "react-native";
 import Dialog from "react-native-dialog";
@@ -39,29 +38,31 @@ const NoFamily = ({ changeInFamily }: NoFamilyProps) => {
     setVisible(false);
   };
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <ScrollView
+      keyboardShouldPersistTaps="handled"
+      bounces={false}
+      contentContainerStyle={{ flexGrow: 1 }}
+    >
       <SafeAreaView className="flex-1">
-        <View className="p-5 flex-1 flex flex-col items-center justify-between">
-          <View className="w-full">
-            <View className="flex flex-col w-full items-start justify-center gap-3">
-              <Text className="text-xl font-semibold">Join via Code:</Text>
-              <View className="flex flex-row gap-2 w-full">
-                <TextInput
-                  className="p-5 border border-slate-600 rounded-lg w-[65%] "
-                  placeholder="Code"
-                  placeholderTextColor={"#475569"}
-                  onChangeText={(newText) => setCode(newText)}
-                  defaultValue={code}
-                />
-                <TouchableOpacity
-                  onPress={changeInFamily}
-                  className="flex-1 rounded-lg bg-slate-800 p-5"
-                >
-                  <Text className="text-white font-bold text-xl text-center">
-                    Join
-                  </Text>
-                </TouchableOpacity>
-              </View>
+        <View className="flex flex-col flex-1 w-full items-center justify-between p-5">
+          <View className="flex flex-col w-full items-start justify-center gap-3">
+            <Text className="text-xl font-semibold">Join via Code:</Text>
+            <View className="flex flex-row gap-2 w-full">
+              <TextInput
+                className="p-5 border border-slate-600 rounded-lg w-[65%] "
+                placeholder="Code"
+                placeholderTextColor={"#475569"}
+                onChangeText={(newText) => setCode(newText)}
+                defaultValue={code}
+              />
+              <TouchableOpacity
+                onPress={changeInFamily}
+                className="flex-1 rounded-lg bg-slate-800 p-5"
+              >
+                <Text className="text-white font-bold text-xl text-center">
+                  Join
+                </Text>
+              </TouchableOpacity>
             </View>
           </View>
 
@@ -93,7 +94,7 @@ const NoFamily = ({ changeInFamily }: NoFamilyProps) => {
           </View>
         </View>
       </SafeAreaView>
-    </TouchableWithoutFeedback>
+    </ScrollView>
   );
 };
 
